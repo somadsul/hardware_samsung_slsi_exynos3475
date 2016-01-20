@@ -28,6 +28,6 @@ LOCAL_C_INCLUDES := \
 
 LOCAL_SRC_FILES := hwc.cpp
 
-LOCAL_MODULE := hwcomposer.exynos5
+LOCAL_MODULE := hwcomposer.exynos3
 LOCAL_MODULE_TAGS := optional
 include $(BUILD_SHARED_LIBRARY)
