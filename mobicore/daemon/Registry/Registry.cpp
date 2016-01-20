@@ -54,7 +54,7 @@ MC_CHECK_DATA_OBJECT_VERSION(CONTAINER, 2, 0);
 
 using namespace std;
 
-static const string MC_REGISTRY_DEFAULT_PATH = "/data/app/mcRegistry";
+static const string MC_REGISTRY_DEFAULT_PATH = "/system/app/mcRegistry";
 static const string AUTH_TOKEN_FILE_NAME = "00000000.authtokcont";
 static const string ROOT_FILE_NAME = "00000000.rootcont";
 static const string SP_CONT_FILE_EXT = ".spcont";
@@ -574,6 +574,7 @@ mcResult_t mcRegistryCleanupRoot(void)
     return MC_DRV_OK;
 }
 
+#include <errno.h>
 
 //------------------------------------------------------------------------------
 regObject_t *mcRegistryGetServiceBlob(
@@ -594,7 +595,7 @@ regObject_t *mcRegistryGetServiceBlob(
 
     FILE *fs = fopen(tlBinFilePath.c_str(), "rb");
     if (!fs) {
-        LOG_E("Cannot open %s", tlBinFilePath.c_str());
+        LOG_E("Cannot open %s (%d)", tlBinFilePath.c_str(), errno);
         return NULL;
     }
 

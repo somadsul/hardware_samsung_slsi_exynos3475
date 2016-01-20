@@ -64,8 +64,6 @@
  * INIT request data to SWD
  */
 struct mc_ioctl_init {
-	/** notification buffer start/length [16:16] [start, length] */
-	uint32_t  nq_offset;
 	/** length of notification queue */
 	uint32_t  nq_length;
 	/** mcp buffer start/length [16:16] [start, length] */
@@ -101,8 +99,8 @@ struct mc_ioctl_info {
 struct mc_ioctl_map {
 	size_t    len; /**<  Buffer length */
 	uint32_t  handle; /**< WSM handle */
+    uint64_t  phys_addr; /**< physical address of WSM (or NULL) */
 	unsigned long  addr; /**< Virtual address */
-	unsigned long  phys_addr; /**< physical address of WSM (or NULL) */
 	bool      reused; /**< if WSM memory was reused, or new allocated */
 };
 
@@ -119,7 +117,7 @@ struct mc_ioctl_reg_wsm {
 	uint32_t  len; /**< size of the virtual address space */
 	uint32_t  pid; /**< process id */
 	uint32_t  handle; /**< driver handle for locked memory */
-	uint32_t  table_phys; /**< physical address of the L2 table */
+	uint64_t  table_phys; /**< physical address of the L2 table */
 };
 
 
@@ -140,10 +138,24 @@ struct mc_ioctl_execute {
 struct mc_ioctl_resolv_cont_wsm {
 	/**< driver handle for buffer */
 	uint32_t  handle;
+    /**< length memory */
+    uint32_t  length;
 	/**< base address of memory */
-	uint32_t  phys;
-	/**< length memory */
-	uint32_t  length;
+	uint64_t  phys;
+    /* fd to owner of the buffer */
+    int32_t fd;
+};
+
+/*
+ * Data exchange structure of the MC_IO_RESOLVE_WSM ioctl command.
+ */
+struct mc_ioctl_resolv_wsm {
+    /* driver handle for buffer */
+    uint32_t handle;
+    /* fd to owner of the buffer */
+    int32_t fd;
+    /* base address of memory */
+    uint64_t phys;
 };
 
 
@@ -217,11 +229,11 @@ struct mc_ioctl_resolv_cont_wsm {
 
 /** Get L2 phys address of a buffer handle allocated to the user. Only
  * available to the daemon */
-#define MC_IO_RESOLVE_WSM	_IOWR(MC_IOC_MAGIC, 15, uint32_t)
+#define MC_IO_RESOLVE_WSM	_IOWR(MC_IOC_MAGIC, 15, mc_ioctl_resolv_wsm)
 
 /** Get the phys address & len of a allocated contiguous buffer. Only available
  * to the daemon */
-#define MC_IO_RESOLVE_CONT_WSM	_IOWR(MC_IOC_MAGIC, 16, struct mc_ioctl_execute)
+#define MC_IO_RESOLVE_CONT_WSM	_IOWR(MC_IOC_MAGIC, 16, struct mc_ioctl_resolv_cont_wsm)
 
 #endif /* _MC_LINUX_H_ */
 /** @} */
