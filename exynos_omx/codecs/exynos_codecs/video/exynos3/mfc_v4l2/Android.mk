@@ -12,8 +12,8 @@ LOCAL_SRC_FILES := \
 
 LOCAL_C_INCLUDES := \
 	$(LOCAL_PATH)/include \
-	hardware/samsung_slsi/exynos5/include \
-	hardware/samsung_slsi/exynos5/exynos_omx/openmax/exynos_omx/include/khronos
+	hardware/samsung_slsi/exynos3470/include \
+	hardware/samsung_slsi/exynos3470/exynos_omx/openmax/exynos_omx/include/khronos
 
 LOCAL_MODULE := libExynosVideoApi
 LOCAL_MODULE_TAGS := optional
