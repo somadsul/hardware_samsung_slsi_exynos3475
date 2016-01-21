@@ -29,7 +29,7 @@ LOCAL_SRC_FILES := ExynosMutex.cpp \
 LOCAL_MODULE_TAGS := eng
 LOCAL_MODULE := libexynosutils
 
-ifeq ($(TARGET_BOARD_PLATFORM), exynos5)
+ifeq ($(TARGET_BOARD_PLATFORM), exynos3)
 LOCAL_SRC_FILES += exynos5_format_v4l2.c
 LOCAL_C_INCLUDES += \
 	$(LOCAL_PATH)/../include
