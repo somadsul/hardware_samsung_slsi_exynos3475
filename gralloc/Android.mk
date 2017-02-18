@@ -19,17 +19,17 @@ LOCAL_PATH := $(call my-dir)
 # hw/<OVERLAY_HARDWARE_MODULE_ID>.<ro.product.board>.so
 include $(CLEAR_VARS)
 
-LOCAL_MODULE_PATH := $(TARGET_OUT_VENDOR_SHARED_LIBRARIES)/hw
+LOCAL_MODULE_PATH := $(TARGET_OUT_SHARED_LIBRARIES)/hw
 LOCAL_SHARED_LIBRARIES := liblog libcutils libion libutils
 
-LOCAL_C_INCLUDES := hardware/samsung_slsi/exynos5/include
+LOCAL_C_INCLUDES := hardware/samsung_slsi/exynos3470/include
 
 LOCAL_SRC_FILES := 	\
 	gralloc.cpp 	\
 	framebuffer.cpp \
 	mapper.cpp
 	
-LOCAL_MODULE := gralloc.universal3470
+LOCAL_MODULE := gralloc.exynos3
 LOCAL_CFLAGS:= -DLOG_TAG=\"gralloc\"
 LOCAL_MODULE_TAGS := optional
 LOCAL_MODULE_OWNER := samsung_arm
