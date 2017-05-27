@@ -27,7 +27,7 @@ LOCAL_CFLAGS += -DGAIA_FW_BETA
 
 LOCAL_SHARED_LIBRARIES += libexynosutils libhwjpeg libexynosv4l2 libcsc libion_exynos libcamera_metadata
 
-LOCAL_MODULE := camera.universal3470
+LOCAL_MODULE := camera.universal3475
 
 LOCAL_MODULE_TAGS := optional
 

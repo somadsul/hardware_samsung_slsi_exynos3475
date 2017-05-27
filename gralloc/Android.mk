@@ -22,7 +22,7 @@ include $(CLEAR_VARS)
 LOCAL_MODULE_PATH := $(TARGET_OUT_SHARED_LIBRARIES)/hw
 LOCAL_SHARED_LIBRARIES := liblog libcutils libion libutils
 
-LOCAL_C_INCLUDES := hardware/samsung_slsi/exynos3470/include
+LOCAL_C_INCLUDES := hardware/samsung_slsi/exynos3475/include
 
 LOCAL_SRC_FILES := 	\
 	gralloc.cpp 	\
