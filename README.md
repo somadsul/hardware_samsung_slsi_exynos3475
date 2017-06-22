@@ -1,0 +1,1 @@
+# hardware_samsung_slsi_exynos3475
